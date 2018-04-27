@@ -20,6 +20,8 @@
         <maven-compiler-pluging.version>3.2</maven-compiler-pluging.version>
 
         <spring-framework.version>4.3.0.RELEASE</spring-framework.version>
+
+        <servlet.version>3.1.0</servlet.version>
     </properties>
 
     <build>
@@ -48,9 +50,18 @@
     </dependencyManagement>
 
     <dependencies>
+        <!--SPRING MVC -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
+        </dependency>
+
+        <!--SERVLET API-->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${servlet.version}</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
