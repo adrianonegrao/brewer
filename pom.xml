@@ -26,6 +26,8 @@
         <thymeleaf.version>3.0.0.RELEASE</thymeleaf.version>
 
         <hibernate-validator.version>5.2.4.Final</hibernate-validator.version>
+
+        <thymeleaf-layout-dialect>2.0.0</thymeleaf-layout-dialect>
     </properties>
 
     <build>
@@ -86,6 +88,14 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>${hibernate-validator.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!--THYMELEAF LAYOUT-->
+        <dependency>
+            <groupId>nz.net.ultraq.thymeleaf</groupId>
+            <artifactId>thymeleaf-layout-dialect</artifactId>
+            <version>${thymeleaf-layout-dialect}</version>
             <scope>compile</scope>
         </dependency>
 
