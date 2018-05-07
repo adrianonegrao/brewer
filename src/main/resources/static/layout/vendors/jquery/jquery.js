@@ -8321,7 +8321,7 @@ jQuery.extend( {
 			text: "text/plain",
 			html: "text/html",
 			xml: "application/xml, text/xml",
-			json: "application/json, text/javascript"
+			json: "application/json, text/javascripts"
 		},
 
 		contents: {
@@ -9225,7 +9225,7 @@ jQuery.ajaxTransport( function( options ) {
 // Install script dataType
 jQuery.ajaxSetup( {
 	accepts: {
-		script: "text/javascript, application/javascript, " +
+		script: "text/javascripts, application/javascripts, " +
 			"application/ecmascript, application/x-ecmascript"
 	},
 	contents: {
