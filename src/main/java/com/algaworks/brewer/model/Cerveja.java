@@ -2,18 +2,47 @@ package com.algaworks.brewer.model;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 
+@Entity
+@Table(name = "cerveja")
 public class Cerveja {
 
-    @NotBlank
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long codigo;
+
+    @NotBlank(message = "SKU é obrigatório")
     private String sku;
 
-    @NotBlank
+    @NotBlank(message = "Nome é obrigatório")
     private String nome;
 
-    @Size(min = 1, max = 50)
+    @Size(min = 1, max = 50, message = "O tamanho da descrição deve estar entre 1 e 50")
     private String descricao;
+
+    private BigDecimal valor;
+
+    @Column(name = "teor_alcoolico")
+    private BigDecimal teorAlcoolico;
+
+    private BigDecimal comissao;
+
+    @Column(name = "quantidade_estoque")
+    private Integer quantidadeEstoque;
+
+    @Enumerated(EnumType.STRING)
+    private Origem origem;
+
+    @Enumerated(EnumType.STRING)
+    private Sabor sabor;
+
+    @ManyToOne
+    @JoinColumn(name = "codigo_estilo")
+    private Estilo estilo;
+
 
     public String getSku() {
         return sku;
@@ -37,5 +66,69 @@ public class Cerveja {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public Long getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(Long codigo) {
+        this.codigo = codigo;
+    }
+
+    public BigDecimal getValor() {
+        return valor;
+    }
+
+    public void setValor(BigDecimal valor) {
+        this.valor = valor;
+    }
+
+    public BigDecimal getTeorAlcoolico() {
+        return teorAlcoolico;
+    }
+
+    public void setTeorAlcoolico(BigDecimal teorAlcoolico) {
+        this.teorAlcoolico = teorAlcoolico;
+    }
+
+    public BigDecimal getComissao() {
+        return comissao;
+    }
+
+    public void setComissao(BigDecimal comissao) {
+        this.comissao = comissao;
+    }
+
+    public Integer getQuantidadeEstoque() {
+        return quantidadeEstoque;
+    }
+
+    public void setQuantidadeEstoque(Integer quantidadeEstoque) {
+        this.quantidadeEstoque = quantidadeEstoque;
+    }
+
+    public Origem getOrigem() {
+        return origem;
+    }
+
+    public void setOrigem(Origem origem) {
+        this.origem = origem;
+    }
+
+    public Sabor getSabor() {
+        return sabor;
+    }
+
+    public void setSabor(Sabor sabor) {
+        this.sabor = sabor;
+    }
+
+    public Estilo getEstilo() {
+        return estilo;
+    }
+
+    public void setEstilo(Estilo estilo) {
+        this.estilo = estilo;
     }
 }
