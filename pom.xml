@@ -36,6 +36,9 @@
         <!-- JPA / Hibernate -->
         <hibernate.version>5.1.0.Final</hibernate.version>
 
+        <flyway-maven-plugin.version>4.0.2</flyway-maven-plugin.version>
+        <mysql-connector-java.version>5.1.39</mysql-connector-java.version>
+
     </properties>
 
     <build>
@@ -46,6 +49,19 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>${flyway-maven-plugin.version}</version>
+                <configuration>
+                    <driver>com.mysql.jdbc.Driver</driver>
+
+                    <user>root</user>
+                    <password>root</password>
+                    <url>jdbc:mysql://localhost/brewer?useSSL=false</url>
                 </configuration>
             </plugin>
         </plugins>
@@ -151,7 +167,13 @@
             <scope>compile</scope>
         </dependency>
 
-
+        <!-- MySQL Driver -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector-java.version}</version>
+            <scope>provided</scope>
+        </dependency>
 
 
     </dependencies>
